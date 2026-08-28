@@ -23,5 +23,11 @@ namespace Backgrounds
             SingletonBehavior<BattleSoundManager>.Instance.ChangeAllyTheme(0);
             component.gameObject.SetActive(false);
         }
+        public override void OnDie()
+        {
+            SingletonBehavior<BattleSoundManager>.Instance.SetEnemyTheme(_oldEnemytheme);
+            Singleton<StageController>.Instance.RemoveEgoMapAll();
+            SingletonBehavior<BattleSceneRoot>.Instance.ChangeToSephirahMap(sephirah, true);
+        }
     }
 }
