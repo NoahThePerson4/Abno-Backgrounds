@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UnityEngine;
 
 namespace Backgrounds
 {
     public class PassiveAbility_PorcuOpiumFlowerM : PassiveAbilityBase
     {
+        private AudioClip[] _oldEnemytheme;
+        private SephirahType sephirah;
         public override void OnWaveStart()
         {
             Singleton<StageController>.Instance.AddEgoMapByAssimilation("Porccubus_FINAL");

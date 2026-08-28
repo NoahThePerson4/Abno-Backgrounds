@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UnityEngine;
 
 namespace Backgrounds
 {
     //This one doesn't work for some reason.
     public class PassiveAbility_TwilightSuckBoyM : PassiveAbilityBase
     {
+        private AudioClip[] _oldEnemytheme;
+        private SephirahType sephirah;
         public override void OnWaveStart()
         {
             Singleton<StageController>.Instance.AddEgoMapByAssimilation("Nosferatu");

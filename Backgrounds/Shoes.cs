@@ -1,13 +1,19 @@
-﻿using System;
+﻿using LOR_XML;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UnityEngine;
 
 namespace Backgrounds
 {
     public class PassiveAbility_RedShoesStepStompM : PassiveAbilityBase
     {
+        private AudioClip[] _oldEnemytheme;
+        private SephirahType sephirah;
+
+        //This is the start of the Act
         public override void OnWaveStart()
         {
             //You put the abnormality map you want here.
@@ -21,6 +27,13 @@ namespace Backgrounds
             SingletonBehavior<BattleSoundManager>.Instance.SetAllyTheme(component.mapBgm);
             SingletonBehavior<BattleSoundManager>.Instance.ChangeAllyTheme(0);
             component.gameObject.SetActive(false);
+        }
+
+        public override void OnDie()
+        {
+            SingletonBehavior<BattleSoundManager>.Instance.SetEnemyTheme(_oldEnemytheme);
+            Singleton<StageController>.Instance.RemoveEgoMapAll();
+            SingletonBehavior<BattleSceneRoot>.Instance.ChangeToSephirahMap(sephirah, true);
         }
     }
 }
